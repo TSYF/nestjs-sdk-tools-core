@@ -1,0 +1,30 @@
+{
+  "name": "@nestjs-sdk-tools/core",
+  "version": "1.0.0",
+  "description": "Error typing, exhaustive matching, and ResultAsync mapping for NestJS SDK generation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./eslint-plugin": "./dist/eslint-plugin/index.js"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "rimraf": "^6.0.1",
+    "reflect-metadata": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "^9.6.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^10.0.0 || ^11.0.0",
+    "neverthrow": "^8.0.0"
+  }
+}

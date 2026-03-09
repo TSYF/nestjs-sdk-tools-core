@@ -1,1 +1,1 @@
-# -nestjs-sdk-tools-core
+# nestjs-sdk-tools-core
