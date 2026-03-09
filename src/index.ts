@@ -31,6 +31,8 @@ export {
   type ServiceErrorUnion,
   type AppHttpResult,
   ERROR_CODE_STATUS_MAP,
+  SDK_ERROR_MAPPER_TOKEN,
+  type SdkErrorMapper,
 } from "./types";
 
 // Exhaustive match type (from patch)

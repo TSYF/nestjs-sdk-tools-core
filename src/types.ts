@@ -182,3 +182,27 @@ export type AppHttpResult<
   T = Record<string, unknown>,
   E extends ServiceError = ServiceError,
 > = import("neverthrow").ResultAsync<T, E>;
+
+// ─── SDK Error Mapper ────────────────────────────────────────────────────────
+
+/**
+ * Function that converts an HttpException into a ServiceError.
+ * Implement this to enforce business-wide error shape rules across all SDKs.
+ */
+export type SdkErrorMapper = (error: HttpException) => ServiceError;
+
+/**
+ * DI injection token for a business-wide error mapper.
+ * Register a global provider for this token to override error normalization
+ * across every SDK in the application.
+ *
+ * @example
+ * // apply once at app level:
+ * { provide: SDK_ERROR_MAPPER_TOKEN, useClass: BusinessErrorMapper, global: true }
+ *
+ * // per-SDK override (takes precedence over global):
+ * ConfigAdapterSdkModule.forRoot({ baseUrl: '...', errorMapper: myMapper })
+ */
+export const SDK_ERROR_MAPPER_TOKEN = Symbol.for(
+  "@nestjs-sdk-tools/error-mapper",
+);
